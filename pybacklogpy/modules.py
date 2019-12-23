@@ -4,6 +4,9 @@ import re
 from requests import Response
 from typing import Optional, Tuple
 
+import urllib3
+from urllib3.exceptions import InsecureRequestWarning
+urllib3.disable_warnings(InsecureRequestWarning)
 
 from pybacklogpy.BacklogConfigure import BacklogConfigure
 
