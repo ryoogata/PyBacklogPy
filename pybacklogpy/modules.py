@@ -46,7 +46,7 @@ class RequestSender:
             for key, value in convert_bool_to_str(url_param).items():
                 params[key] = value
         _url = self.api_url + path
-        return requests.get(url=(self.api_url + path), params=params)
+        return requests.get(url=(self.api_url + path), params=params, verify=False)
 
     def send_patch_request(self, path: str, request_param: dict) -> Response:
         data_ = convert_bool_to_str(request_param)
@@ -78,7 +78,7 @@ class RequestSender:
         if url_param:
             for p in url_param:
                 params[p] = url_param[p]
-        response = requests.get(url=(self.api_url + path), params=params)
+        response = requests.get(url=(self.api_url + path), params=params, verify=False)
         if not response.ok:
             return '', response
         filename = get_file_name(response.headers['Content-Disposition'])
